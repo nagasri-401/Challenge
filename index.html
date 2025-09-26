@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sri Foods Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background:#f9f9f9; }
+    h1 { color: #2c3e50; }
+    .menu { background:#fff; padding:15px; margin-bottom:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .menu h2 { margin-bottom:10px; }
+    .menu ul { list-style-type: none; padding: 0; }
+    .menu li { padding:6px 0; border-bottom:1px solid #eee; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
+    .card { background:#fff; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    .btn { background:#2c3e50; color:#fff; padding:6px 12px; border:none; border-radius:4px; cursor:pointer; }
+    .btn:hover { background:#1a252f; }
+  </style>
+</head>
+<body>
+  <h1>🍴 Sri Foods Dashboard</h1>
+
+  <!-- Menu Section -->
+  <div class="menu">
+    <h2>📋 Menu</h2>
+    <ul>
+      <li>🍛 Veg Thali - ₹120</li>
+      <li>🍗 Chicken Biryani - ₹180</li>
+      <li>🥗 Paneer Salad - ₹90</li>
+      <li>🍹 Mango Juice - ₹50</li>
+      <li>🥘 Dal Fry - ₹70</li>
+    </ul>
+  </div>
+
+  <!-- Dashboard Section -->
+  <div class="grid">
+    <div class="card">
+      <h3>Total Orders</h3>
+      <p id="orders">0</p>
+      <button class="btn" onclick="addOrder()">Add Order</button>
+    </div>
+    <div class="card">
+      <h3>Total Revenue</h3>
+      <p id="revenue">₹0</p>
+      <button class="btn" onclick="addRevenue()">Add ₹100</button>
+    </div>
+    <div class="card">
+      <h3>Inventory</h3>
+      <p id="inventory">100</p>
+      <button class="btn" onclick="sellItem()">Sell Item</button>
+    </div>
+  </div>
+
+  <script>
+    let orders = 0, revenue = 0, inventory = 100;
+
+    function addOrder() {
+      orders++;
+      document.getElementById("orders").innerText = orders;
+    }
+    function addRevenue() {
+      revenue += 100;
+      document.getElementById("revenue").innerText = "₹" + revenue;
+    }
+    function sellItem() {
+      if (inventory > 0) {
+        inventory--;
+        document.getElementById("inventory").innerText = inventory;
+      } else {
+        alert("Out of stock!");
+      }
+    }
+  </script>
+</body>
+</html>
